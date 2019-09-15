@@ -1,0 +1,5 @@
+apiVersion: com.alessandromarrella/v0
+kind: DhallGenerator
+metadata:
+  name: notImportantHere
+packageLocation: nginx/app.dhall

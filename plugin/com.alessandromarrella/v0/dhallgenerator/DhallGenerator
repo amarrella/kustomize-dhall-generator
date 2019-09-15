@@ -1,0 +1,32 @@
+#!/bin/bash
+# Dhall generator
+#
+# Reads a file like this
+#
+#  apiVersion: com.alessandromarrella/v0
+#  kind: DhallGenerator
+#  metadata:
+#    name: whatever
+#  fileLocation: ./path/to/file
+#
+# Example execution:
+# ./plugin/com.alessandromarrella/v0/DhallGenerator configFile.yaml
+
+set -e
+function parseYaml {
+  local file=$1
+  while read -r line
+  do
+    local k=${line%:*}
+    local v=${line#*:}
+
+    [ "$k" == "packageLocation" ] && packageLocation=$v
+  done <"$file"
+
+  # Trim leading space
+  packageLocation="${packageLocation#"${packageLocation%%[![:space:]]*}"}"
+}
+
+parseYaml $1 
+
+echo ./$packageLocation | dhall-to-yaml --omitEmpty --explain
