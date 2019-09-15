@@ -11,6 +11,8 @@ cp -r plugin/ $XDG_CONFIG_HOME/kustomize/plugin/
 
 If undefined, the default `$XDG_CONFIG_HOME` is `$HOME/.config`.
 
+Note: this also assumes you have `dhall-to-yaml` (from `dhall-json`) in your `$PATH`.
+
 ## Usage
 To use the plugin, create a yaml template like this
 ```yaml
