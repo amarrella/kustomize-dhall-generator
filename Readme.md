@@ -33,3 +33,10 @@ generators:
 
 See the `example` folder for a simple example with `nginx`.
 
+You can then run 
+```sh
+kustomize build --enable_alpha_plugins
+```
+
+Note: it's not possible yet to use it directly with kubectl due to https://github.com/kubernetes/enhancements/issues/993
+You need to use the `kustomize` binary.
